@@ -32,7 +32,9 @@
   <router-view
   :inventory="inventory"
   />
-  <Slidebar/>
+  <Slidebar
+  v-if="showSlidebar"
+  />
 </template>
 
 <script>
@@ -42,9 +44,15 @@ export default {
   components: {
     Slidebar
   },
-  default () {
+  data () {
     return {
+      showSlidebar:false;
       inventory: Product
+    }
+  },
+  methods:{
+    toggleSlidebar(){
+      this.showSlidebar = !this.showSlidebar
     }
   }
 }
